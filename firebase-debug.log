@@ -1,0 +1,34 @@
+[debug] [2020-03-15T09:24:07.923Z] ----------------------------------------------------------------------
+[debug] [2020-03-15T09:24:07.925Z] Command:       /Users/seekseep/.nodebrew/node/v12.10.0/bin/node /Users/seekseep/.nodebrew/current/bin/firebase deploy
+[debug] [2020-03-15T09:24:07.925Z] CLI Version:   7.13.1
+[debug] [2020-03-15T09:24:07.925Z] Platform:      darwin
+[debug] [2020-03-15T09:24:07.925Z] Node Version:  v12.10.0
+[debug] [2020-03-15T09:24:07.936Z] Time:          Sun Mar 15 2020 18:24:07 GMT+0900 (GMT+09:00)
+[debug] [2020-03-15T09:24:07.936Z] ----------------------------------------------------------------------
+[debug] [2020-03-15T09:24:07.936Z] 
+[debug] [2020-03-15T09:24:07.944Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-15T09:24:07.944Z] > authorizing via signed-in user
+[debug] [2020-03-15T09:24:07.944Z] [iam] checking project kimochi-quiz for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-15T09:24:07.946Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/kimochi-quiz:testIamPermissions  
+
+[debug] [2020-03-15T09:24:09.174Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-15T09:24:09.176Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/kimochi-quiz  
+ 
+[debug] [2020-03-15T09:24:10.132Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'kimochi-quiz'...
+[info] 
+[info] i  deploying hosting
+[debug] [2020-03-15T09:24:10.137Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/kimochi-quiz/versions  
+
+[debug] [2020-03-15T09:24:12.242Z] <<< HTTP RESPONSE 200
+[info] i  hosting[kimochi-quiz]: beginning deploy...
+[info] i  hosting[kimochi-quiz]: found 19 files in build
+[debug] [2020-03-15T09:24:12.252Z] [hosting] hash cache [YnVpbGQ] not populated
+[debug] [2020-03-15T09:24:12.390Z] [hosting] hash cache [YnVpbGQ] stored for 19 files
+[debug] [2020-03-15T09:24:12.390Z] [hosting][hash queue][FINAL]
+[debug] [2020-03-15T09:24:12.390Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/kimochi-quiz/versions/5436303adff4801c:populateFiles  
+ <request body omitted>
+[debug] [2020-03-15T09:24:13.984Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-15T09:24:13.997Z] [hosting][populate queue][FINAL]
+[debug] [2020-03-15T09:24:13.998Z] [hosting] uploads queued: 19
