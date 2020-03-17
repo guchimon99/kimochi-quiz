@@ -50,6 +50,8 @@ const Quiz = ({ match }) => {
 
   const isSubmittable = useMemo(() => selected !== null, [selected])
 
+  if (!user.isFinishedTutorial) return <Welcome onConfirm={finishTutorial} />
+
   return (
     <>
       <Page>
@@ -80,9 +82,8 @@ const Quiz = ({ match }) => {
           </Footer>
         </Form>
       </Page>
-      <Wrong user={user} isShown={isFailed} lastAnswer={lastAnswer} onClose={closeHandler} />
-      <Correct user={user} isShown={isSucceeded} lastAnswer={lastAnswer} />
-      {!user.isFinishedTutorial ? <Welcome onConfirm={finishTutorial} /> : null}
+      {isFailed ? <Wrong user={user} lastAnswer={lastAnswer} onClose={closeHandler} /> : null}
+      {isSucceeded ? <Correct user={user} lastAnswer={lastAnswer} /> : null}
     </>
   )
 }

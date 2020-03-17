@@ -1,21 +1,27 @@
 import React from 'react'
 
+import QuizTutorial from '../../../../images/quiz-tutorial.svg'
+
 import Button from '../../../Button'
+import Page, { Header, Title, Body, Footer } from '../../../Page'
 
 const Welcome = ({ onConfirm }) => (
-  <div className="fixed inset-0 bg-yellow-500">
-    <div className="max-w-lg mx-auto h-full flex flex-col">
-      <div className="p-4 pt-8">
-        <div className="font-bold text-2xl text-center">クイズをだそう！</div>
+  <Page>
+    <Header>
+      <Title>クイズをだそう！</Title>
+    </Header>
+    <Body>
+      <div className="py-32 min-h-screen flex flex-col justify-center">
+        <div className="w-full px-8 mb-4">
+          <img className="w-full max-w-md h-auto" src={QuizTutorial} alt="きもちを伝える"/>
+        </div>
+        <div className="text-2xl text-center">ちかくにいるひとに<br/>きもちクイズをだそう</div>
       </div>
-      <div className="flex-grow flex flex-col justify-center p-4 text-2xl">
-        <div>ちかく に いる ともだち や かぞく に クイズ を だそう。</div>
-      </div>
-      <div className="p-4">
-        <Button onClick={onConfirm}>クイズをだす</Button>
-      </div>
-    </div>
-  </div>
+    </Body>
+    <Footer>
+      <Button onClick={onConfirm}>クイズをだす</Button>
+    </Footer>
+  </Page>
 )
 
 export default Welcome

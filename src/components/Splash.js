@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
-import * as Icons from 'react-feather'
+
+import QuizTutorial from '../images/quiz-tutorial.svg'
 
 import { useInit, useIsReady } from '../hooks/app'
 
@@ -29,7 +30,7 @@ const Splash = () => {
   return (
     <div className="fixed w-full h-full flex flex-col bg-yellow-500" style={rootStyle}>
       <div className="flex-grow flex justify-center items-center">
-        <Icons.Smile size={128} />
+        <img className="w-64 h-64 object-contain" src={QuizTutorial} alt="クイズを出す鳥"/>
       </div>
       <div className="text-center font-bold text-center text-2xl p-4">
         きもちクイズ
