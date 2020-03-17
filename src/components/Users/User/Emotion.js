@@ -8,6 +8,7 @@ import { useEmotions } from '../../../hooks/emotions'
 import Form from '../../Form'
 import Button, { RadioButton } from '../../Button'
 import { useForm, useInput } from '../../../hooks/form'
+import Page, { Header, Title, Body, Footer } from '../../Page'
 
 const Emotion = ({ match }) => {
   const userID = match.params.id
@@ -33,30 +34,34 @@ const Emotion = ({ match }) => {
   if (isSucceeded) return <Redirect to={`/users/${userID}/quiz`} />
 
   return (
-    <Form className="max-w-lg mx-auto min-h-screen flex flex-col" onSubmit={submitHandler}>
-      <div className="p-4 text-center relative">
+    <Page>
+      <Header>
         <div className="flex">
           <Link to="/users" className="block p-2">
             <Icons.ArrowLeft />
           </Link>
         </div>
-        <div className="text-2xl font-bold">{user.displayName}のいまのキモチは？</div>
-      </div>
-      <div className="flex px-4 flex-grow flex-wrap overflow-auto flex-basis-0">
-        {emotions.map(emotion => {
-          return (
-            <div key={emotion.id} className="w-1/4 p-1">
-              <RadioButton required value={emotion.id} currentValue={+selected} onChange={changeSelectedHandler} name="emotion">
-                <span className='block text-center text-3xl'>{emotion.emoji}</span>
-              </RadioButton>
-            </div>
-          )
-        })}
-      </div>
-      <div className="p-4">
-        <Button disabled={!isSubmittable}>つぎへ</Button>
-      </div>
-    </Form>
+        <Title>{user.displayName}のいまのキモチは？</Title>
+      </Header>
+      <Form onSubmit={submitHandler}>
+        <Body>
+          <div className="flex flex-grow flex-wrap overflow-auto flex-basis-0 pt-32 pb-32">
+            {emotions.map(emotion => {
+              return (
+                <div key={emotion.id} className="w-1/4 p-1">
+                  <RadioButton required value={emotion.id} currentValue={+selected} onChange={changeSelectedHandler} name="emotion">
+                    <span className='block text-center text-3xl'>{emotion.emoji}</span>
+                  </RadioButton>
+                </div>
+              )
+            })}
+          </div>
+        </Body>
+        <Footer>
+          <Button disabled={!isSubmittable}>つぎへ</Button>
+        </Footer>
+      </Form>
+    </Page>
   )
 }
 

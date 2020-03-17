@@ -18,14 +18,12 @@ const Main = () => {
   if (!isReady) return null
 
   return (
-    <div className="bg-yellow-500 w-full min-h-screen">
-      <Router>
-        <Switch>
-          <Route path="/users" component={Users} />
-          <Redirect to="/users" />
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/users" component={Users} />
+        <Redirect to="/users" />
+      </Switch>
+    </Router>
   )
 }
 

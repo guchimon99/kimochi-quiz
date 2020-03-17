@@ -11,6 +11,7 @@ import Correct from './Correct'
 import Welcome from './Welcome'
 
 import Form from '../../../Form'
+import Page, { Header, Title, Body, Footer } from '../../../Page'
 import Button, { RadioButton } from '../../../Button'
 
 const Quiz = ({ match }) => {
@@ -51,30 +52,34 @@ const Quiz = ({ match }) => {
 
   return (
     <>
-      <Form className="max-w-lg mx-auto min-h-screen flex flex-col" onSubmit={submitHandler}>
-        <div className="p-4 text-center relative">
+      <Page>
+        <Header>
           <div className="flex">
             <Link to={`/users/${user.id}/emotion`} className="block p-2">
               <Icons.X />
             </Link>
           </div>
-          <div className="text-2xl font-bold">{user.displayName}のいまのキモチは？</div>
-        </div>
-        <div className="flex-grow flex flex-col p-4 justify-center">
-          {choices.map(choice =>
-            <div key={choice.id} className="mb-4">
-              <RadioButton
-                name="choice" id={`choice_${choice.id}`} onChange={selectHandler}
-                value={choice.id} currentValue={+selected} disabled={choice.isAnswered}>
-                <div className="text-2xl">{choice.emotion.emoji}</div>
-              </RadioButton>
+          <Title>{user.displayName}のいまのキモチは？</Title>
+        </Header>
+        <Form onSubmit={submitHandler}>
+          <Body>
+            <div className="min-h-screen py-32 flex flex-col justify-center">
+              {choices.map(choice =>
+                <div key={choice.id} className="mb-4">
+                  <RadioButton
+                    name="choice" id={`choice_${choice.id}`} onChange={selectHandler}
+                    value={choice.id} currentValue={+selected} disabled={choice.isAnswered}>
+                    <div className="text-2xl">{choice.emotion.emoji}</div>
+                  </RadioButton>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className="p-4">
-          <Button disabled={!isSubmittable} type="submit">こたえる</Button>
-        </div>
-      </Form>
+          </Body>
+          <Footer>
+            <Button disabled={!isSubmittable} type="submit">こたえる</Button>
+          </Footer>
+        </Form>
+      </Page>
       <Wrong user={user} isShown={isFailed} lastAnswer={lastAnswer} onClose={closeHandler} />
       <Correct user={user} isShown={isSucceeded} lastAnswer={lastAnswer} />
       {!user.isFinishedTutorial ? <Welcome onConfirm={finishTutorial} /> : null}

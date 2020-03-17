@@ -7,6 +7,7 @@ import { useAddUser, useUsersAsArray } from '../../hooks/users'
 
 import Form, { Field, Label, Input } from '../Form'
 import Button from '../Button'
+import Page, { Header, Title, Body, Footer } from '../Page'
 
 const New = () => {
   const users = useUsersAsArray()
@@ -26,8 +27,8 @@ const New = () => {
   if (isSucceeded) return <Redirect to="/users" />
 
   return (
-    <Form className="max-w-lg mx-auto min-h-screen flex flex-col" onSubmit={submitHandler}>
-      <div className="p-4 text-center relative">
+    <Page>
+      <Header>
         {users.length > 0 ? (
           <div className="flex">
             <Link to="/users" className="block p-2">
@@ -35,18 +36,22 @@ const New = () => {
             </Link>
           </div>
         ) : null}
-        <div className="text-2xl font-bold">あなたのなまえは？</div>
-      </div>
-      <div className="flex flex-col px-4 flex-grow justify-center">
-        <Field>
-          <Label>なまえ</Label>
-          <Input required maxLength={50} value={displayName} onChange={displayChangeHandler} />
-        </Field>
-      </div>
-      <div className="p-4">
-        <Button>作成</Button>
-      </div>
-    </Form>
+        <Title>あなたのなまえは？</Title>
+      </Header>
+      <Form onSubmit={submitHandler}>
+        <Body>
+          <div className="pt-32 pb-20 min-h-screen flex flex-col justify-center">
+            <Field>
+              <Label>なまえ</Label>
+              <Input required maxLength={50} value={displayName} onChange={displayChangeHandler} />
+            </Field>
+          </div>
+        </Body>
+        <Footer>
+          <Button>作成</Button>
+        </Footer>
+      </Form>
+    </Page>
   )
 }
 
